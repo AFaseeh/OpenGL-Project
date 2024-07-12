@@ -3,6 +3,9 @@
 #include <iostream>
 #include "Shader.h"
 #include "stb_image.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -177,6 +180,13 @@ int main()
     myShader.setInt("texture1", 0);
     myShader.setInt("texture2", 1);
 
+    // Transformations
+    glm::mat4 trans = glm::mat4(1.0f);
+    unsigned int transformLoc = glGetUniformLocation(myShader.ID, "transform");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+    //trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+    
+
     // Draw in "wireframe mode"
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -194,6 +204,14 @@ int main()
         glBindTexture(GL_TEXTURE_2D, texture[0]);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture[1]);
+
+        myShader.use();
+
+        glm::mat4 transform = glm::mat4(1.0f);
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.2f, 0.0f));
+        transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+        unsigned int transformLoc = glGetUniformLocation(myShader.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
 
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
