@@ -233,25 +233,25 @@ int main()
 }
 
 
-int test()
-{
-    float vertices[] = {
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-    };
+// int test()
+// {
+//     float vertices[] = {
+//     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+//      0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+//      0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+//      0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+//     -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+//     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+//     };
 
-    unsigned int VAO;
-    glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
+//     unsigned int VAO;
+//     glGenVertexArrays(1, &VAO);
+//     glBindVertexArray(VAO);
 
-    unsigned int VBO;
-    glGenBuffers(1, &VBO);
-    glVertexAttribPointer(0,  )
-}
+//     unsigned int VBO;
+//     glGenBuffers(1, &VBO);
+//     //glVertexAttribPointer(0,  )
+// }
 
 
 
